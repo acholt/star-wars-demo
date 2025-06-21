@@ -24,6 +24,7 @@ spec:
   template:
     metadata:
       labels:
+        name: deathstar
         org: empire
         class: deathstar
     spec:
@@ -45,6 +46,7 @@ spec:
   template:
     metadata:
       labels:
+        name: spaceship
         org: empire
         class: spaceship
     spec:
