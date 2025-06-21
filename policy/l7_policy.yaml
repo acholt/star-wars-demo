@@ -1,23 +1,23 @@
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
-description: "Protect deathstar APIs"
 metadata:
   name: "deathstar-api-protection"
 spec:
+  description: "Protect Deathstar APIs with Layer 7 policies"
   endpointSelector:
     matchLabels:
       class: deathstar
       org: empire
   ingress:
   - fromEndpoints:
-    - matchLabels:
+    - matchLabels: # L3
         class: spaceship
     toPorts:
-    - ports:
+    - ports: # L4
       - port: "80"
         protocol: TCP
       rules:
-        http:
+        http: # L7
         - method: "GET"
           path: "/v1/"
         - method: "POST"
